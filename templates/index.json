@@ -1193,7 +1193,7 @@
               "settings": {
                 "text": "<p>We deliver real nutrition that would fit perfectly into your routine! For growing kids, busy moms, and<br/>women who want smarter snacks without the added calories.</p>",
                 "width": "fit-content",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
