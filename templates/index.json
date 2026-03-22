@@ -1261,7 +1261,7 @@
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
-            "width": "custom",
+            "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
@@ -1318,13 +1318,13 @@
             "text_QGC9QB": {
               "type": "text",
               "settings": {
-                "text": "<p>“I can’t get enough of these — soft, gooey, and packed with goodness!”</p>",
+                "text": "<p><strong>“I can’t get enough of these — soft, gooey, and packed with goodness!”</strong></p>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "1.25rem",
+                "font_size": "1.5rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -1348,9 +1348,9 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.25rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -1365,27 +1365,12 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "button_79cbwV": {
-              "type": "button",
-              "settings": {
-                "label": "Shop now",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "text_3Ayn3m",
             "text_QGC9QB",
-            "text_f4yb9P",
-            "button_79cbwV"
+            "text_f4yb9P"
           ]
         },
         "image_mKUe7R": {
@@ -1393,9 +1378,9 @@
           "settings": {
             "image": "shopify://shop_images/celebrety-favorite-snack.png",
             "link": "",
-            "image_ratio": "square",
-            "width": "fill",
-            "custom_width": 100,
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 30,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -1428,7 +1413,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "",
+        "color_scheme": "scheme-6",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -1440,8 +1425,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
