@@ -198,7 +198,7 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#b29fcf",
+          "background": "#e9dbff",
           "foreground_heading": "#654499",
           "foreground": "#654499",
           "primary": "#4d9dd9",
@@ -212,7 +212,7 @@
           "primary_button_hover_text": "#ffffff",
           "primary_button_hover_border": "#654499",
           "secondary_button_background": "#fffbf7",
-          "secondary_button_text": "#000000",
+          "secondary_button_text": "#654499",
           "secondary_button_border": "#654499",
           "secondary_button_hover_background": "#654499",
           "secondary_button_hover_text": "#ffffff",
