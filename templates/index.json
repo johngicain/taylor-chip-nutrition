@@ -55,7 +55,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Your Daily Protein Ritual — Formulated for Gut & Hormone Support</p>",
+                "text": "<p>Your Daily Protein Ritual — <strong>Formulated for Gut & Hormone Support</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
