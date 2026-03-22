@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "If you plan on making a purchase, know that you are part of the beta test. Thank you! 💪",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
