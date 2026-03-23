@@ -56,6 +56,18 @@
     content_for 'block', type: '_header-menu', id: 'header-menu'
   endcapture
 
+  capture menu_left
+    if section.settings.logo_position == 'between_menu' and section.settings.menu_row == 'top'
+      content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'split_left'
+    endif
+  endcapture
+
+  capture menu_right
+    if section.settings.logo_position == 'between_menu' and section.settings.menu_row == 'top'
+      content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'split_right'
+    endif
+  endcapture
+
   capture drawer_menu
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
   endcapture
@@ -96,6 +108,22 @@
       endif
     endif
   endif
+
+  if section.settings.logo_position == 'between_menu' and section.settings.menu_row == 'top'
+    assign order_parts = order | split: ','
+    assign order_rebuilt = ''
+    for part in order_parts
+      unless part == 'menu'
+        if part == 'logo'
+          assign order_rebuilt = order_rebuilt | append: 'menu_left,logo,menu_right,'
+        else
+          assign order_rebuilt = order_rebuilt | append: part | append: ','
+        endif
+      endunless
+    endfor
+    assign order = order_rebuilt | split: ',' | compact | join: ','
+  endif
+
   capture search
     render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style
   endcapture
@@ -297,6 +325,7 @@
 <header-component
   id="header-component"
   class="{{ class }}"
+  data-logo-position="{{ section.settings.logo_position }}"
   data-theme-color="rgb({{ section.settings.color_scheme_top.settings.background.rgb }})"
   {% if transparent %}
     transparent="{{ transparent }}"
@@ -370,6 +399,8 @@
         first: first,
         logo: logo,
         menu: menu,
+        menu_left: menu_left,
+        menu_right: menu_right,
         actions: actions,
         localization: localization_markup,
         search: search,
@@ -752,6 +783,12 @@
       --header-right: minmax(max-content, 1fr);
     }
 
+    #header-component[data-logo-position='between_menu'][data-menu-style='menu'] & {
+      --header-center: auto;
+      --header-left: minmax(max-content, 1fr);
+      --header-right: minmax(max-content, 1fr);
+    }
+
     /* If there is no center column, make the column the menu is in grow eagerly */
     &:where(:not(:has(.header__column--center))) {
       @media screen and (min-width: 750px) {
@@ -803,6 +840,16 @@
       header-actions {
         grid-area: rightB;
       }
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #header-component[data-logo-position='between_menu'][data-menu-style='menu'] .header__column--left header-menu .overflow-menu::part(list) {
+      justify-content: flex-end;
+    }
+
+    #header-component[data-logo-position='between_menu'][data-menu-style='menu'] .header__column--right header-menu .overflow-menu::part(list) {
+      justify-content: flex-start;
     }
   }
 
@@ -1148,6 +1195,10 @@
         {
           "value": "right",
           "label": "t:options.right"
+        },
+        {
+          "value": "between_menu",
+          "label": "t:options.between_menu"
         }
       ],
       "default": "center"

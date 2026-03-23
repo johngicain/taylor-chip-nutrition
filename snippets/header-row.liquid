@@ -8,6 +8,8 @@
   @param {string} [first] - Optional captured HTML for the first item (typically drawer menu for top row)
   @param {string} [logo] - Captured HTML for the logo element
   @param {string} [menu] - Captured HTML for the menu navigation
+  @param {string} [menu_left] - First half of split desktop menu (logo between menu)
+  @param {string} [menu_right] - Second half of split desktop menu
   @param {string} [actions] - Captured HTML for header actions (cart, account buttons, etc.)
   @param {string} [localization] - Captured HTML for language/country selector
   @param {string} [search] - Captured HTML for search input
@@ -33,7 +35,17 @@
     case item
       when 'actions'
         assign item_column = 'right'
+      when 'menu_left'
+        assign item_row = settings.menu_row | default: 'top'
+        assign item_column = 'left'
+      when 'menu_right'
+        assign item_row = settings.menu_row | default: 'top'
+        assign item_column = 'right'
     endcase
+
+    if item == 'logo' and settings.logo_position == 'between_menu'
+      assign item_column = 'center'
+    endif
 
     if item_row == row
       case item_column
@@ -78,6 +90,10 @@
               {{ logo }}
             {% when 'menu' %}
               {{ menu }}
+            {% when 'menu_left' %}
+              {{ menu_left }}
+            {% when 'menu_right' %}
+              {{ menu_right }}
             {% when 'localization' %}
               {{ localization }}
             {% when 'search' %}
