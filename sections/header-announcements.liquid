@@ -57,13 +57,15 @@
   .announcement-bar__slides {
     display: grid;
     grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
+    width: calc(100% - var(--button-size) * 1.4);
+    /* max-width: 680px; */
     margin-inline: auto;
   }
 
-  .announcement-bar__slides > * {
-    grid-area: stack;
+  @media screen and (min-width: 990px) {
+    .announcement-bar__slides {
+
+    }
   }
 
   .announcement-bar__slide {
@@ -111,8 +113,10 @@
 
   .announcement-bar__slide {
     place-content: center;
+    overflow: visible;
   }
 
+  .announcement-bar__content .announcement-bar__text:first-child,
   .announcement-bar__text:first-child {
     margin: 0;
   }
