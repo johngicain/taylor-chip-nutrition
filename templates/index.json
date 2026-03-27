@@ -2080,7 +2080,7 @@
                 "case": "none",
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
-                "strong_color": "#000000",
+                "strong_color": "#1c508e",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
