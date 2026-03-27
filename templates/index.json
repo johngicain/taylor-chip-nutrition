@@ -148,7 +148,7 @@
           "settings": {
             "image": "shopify://shop_images/taylor-chip-banner.png",
             "link": "",
-            "image_ratio": "square",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "custom",
