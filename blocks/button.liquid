@@ -1,5 +1,5 @@
 
-{% render 'button', link: block.settings.link %}
+{% render 'button', link: block.settings.link, block: block %}
 
 {% schema %}
 {
@@ -22,6 +22,32 @@
       "id": "open_in_new_tab",
       "label": "t:settings.open_new_tab",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:content.desktop_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_side_image",
+      "label": "t:settings.desktop_side_image"
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_position",
+      "label": "t:settings.image_position",
+      "options": [
+        {
+          "value": "before",
+          "label": "t:options.before_button"
+        },
+        {
+          "value": "after",
+          "label": "t:options.after_button"
+        }
+      ],
+      "default": "before",
+      "visible_if": "{{ block.settings.desktop_side_image != blank }}"
     },
     {
       "type": "select",

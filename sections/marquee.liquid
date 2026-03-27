@@ -15,6 +15,13 @@
     {%- render 'spacing-style', settings: section.settings %};
     {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
     --marquee-direction: {{ section.settings.movement_direction }};
+    {%- if section.settings.text_block_color != blank -%}
+      --marquee-text-block-color: {{ section.settings.text_block_color }};
+    {%- endif -%}
+    {%- if section.settings.text_block_background_color != blank -%}
+      --marquee-text-block-bg: {{ section.settings.text_block_background_color }};
+    {%- endif -%}
+    --marquee-text-block-radius: {{ section.settings.text_block_border_radius }}px;
   "
   data-speed-factor="25"
   data-movement-direction="{{ section.settings.movement_direction }}"
@@ -77,6 +84,20 @@
     align-content: center;
   }
 
+  .marquee__repeated-items .text-block {
+    background-color: var(--marquee-text-block-bg);
+    border-radius: var(--marquee-text-block-radius);
+  }
+
+  .marquee__repeated-items .text-block:not(.custom-color) {
+    color: var(--marquee-text-block-color);
+  }
+
+  .marquee__repeated-items .text-block.custom-color,
+  .marquee__repeated-items .text-block.custom-color > :is(h1, h2, h3, h4, h5, h6, p, *) {
+    color: var(--marquee-text-block-color);
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     marquee-component:not([data-disabled]) .marquee__wrapper {
       animation: marquee-motion var(--marquee-speed) linear infinite var(--marquee-direction);
@@ -132,6 +153,32 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "text_block_color",
+      "label": "t:settings.color",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "text_block_background_color",
+      "label": "t:settings.background_color",
+      "alpha": true
+    },
+    {
+      "type": "range",
+      "id": "text_block_border_radius",
+      "label": "t:settings.corner_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "header",

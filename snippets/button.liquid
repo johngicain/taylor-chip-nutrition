@@ -9,7 +9,12 @@
 {%- enddoc -%}
 
 {% assign block_settings = block.settings %}
+{% liquid
+  assign desktop_image = block_settings.desktop_side_image
+  assign desktop_image_position = block_settings.desktop_image_position | default: 'before'
+%}
 
+{% capture button_markup %}
 <a
   {% if link == blank %}
     role="link"
@@ -31,6 +36,25 @@
 >
   {{ block_settings.label }}
 </a>
+{% endcapture %}
+
+{% if desktop_image != blank %}
+  <div class="button-block button-block--{{ block.id }} button-block--with-desktop-image">
+    {% if desktop_image_position == 'after' %}
+      {{ button_markup }}
+      <div class="button-block__desktop-image" aria-hidden="true">
+        {{ desktop_image | image_url: width: 400 | image_tag: class: 'button-block__desktop-image-img', loading: 'lazy', widths: '200, 300, 400', sizes: '(min-width: 750px) 200px, 1px' }}
+      </div>
+    {% else %}
+      <div class="button-block__desktop-image" aria-hidden="true">
+        {{ desktop_image | image_url: width: 400 | image_tag: class: 'button-block__desktop-image-img', loading: 'lazy', widths: '200, 300, 400', sizes: '(min-width: 750px) 200px, 1px' }}
+      </div>
+      {{ button_markup }}
+    {% endif %}
+  </div>
+{% else %}
+  {{ button_markup }}
+{% endif %}
 
 {% stylesheet %}
   .link {
@@ -40,6 +64,35 @@
     &:hover {
       color: var(--color-primary-hover);
       text-decoration-color: transparent;
+    }
+  }
+
+  .button-block--with-desktop-image {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    max-width: 100%;
+  }
+
+  .button-block__desktop-image {
+    position: absolute;
+    display: none;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .button-block__desktop-image {
+      display: block;
+    }
+
+    .button-block__desktop-image-img {
+      display: block;
+      width: auto;
+      max-width: min(200px, 100%);
+      height: auto;
+      max-height: 5rem;
+      object-fit: contain;
     }
   }
 {% endstylesheet %}

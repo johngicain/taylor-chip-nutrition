@@ -1,0 +1,18 @@
+.marquee__content .marquee__repeated-items > div {
+  border-radius: 5rem;
+  padding: 0.5rem 2rem;
+}
+
+.ratings-block__text {
+  color: var(--color);
+}
+
+@media screen and (min-width: 990px) {
+  .header__columns
+    .header__column--left
+    .header-menu__inner
+    .menu-list__link
+    .menu-list__link-title {
+    padding-left: 1rem;
+  }
+}

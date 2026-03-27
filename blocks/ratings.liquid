@@ -1,0 +1,307 @@
+
+{% liquid
+  assign block_settings = block.settings
+  assign rating_value = block_settings.rating
+
+  case block_settings.stars_color
+    when 'foreground'
+      assign star_fill = 'var(--color-foreground)'
+      assign star_fill_rgb = 'var(--color-foreground-rgb)'
+    when 'foreground_heading'
+      assign star_fill = 'var(--color-foreground-heading)'
+      assign star_fill_rgb = 'var(--color-foreground-heading-rgb)'
+    when 'primary'
+      assign star_fill = 'var(--color-primary)'
+      assign star_fill_rgb = 'var(--color-primary-rgb)'
+    when 'primary_hover'
+      assign star_fill = 'var(--color-primary-hover)'
+      assign star_fill_rgb = 'var(--color-primary-hover-rgb)'
+    when 'border'
+      assign star_fill = 'var(--color-border)'
+      assign star_fill_rgb = 'var(--color-border-rgb)'
+    else
+      assign star_fill = 'var(--color-primary)'
+      assign star_fill_rgb = 'var(--color-primary-rgb)'
+  endcase
+
+  if block_settings.text_color == 'match'
+    assign text_fill = 'var(--star-fill-color)'
+  else
+    case block_settings.text_color
+      when 'foreground'
+        assign text_fill = 'var(--color-foreground)'
+      when 'foreground_heading'
+        assign text_fill = 'var(--color-foreground-heading)'
+      when 'primary'
+        assign text_fill = 'var(--color-primary)'
+      when 'primary_hover'
+        assign text_fill = 'var(--color-primary-hover)'
+      when 'border'
+        assign text_fill = 'var(--color-border)'
+      else
+        assign text_fill = 'var(--star-fill-color)'
+    endcase
+  endif
+%}
+
+<div
+  class="ratings-block justify-{{ block_settings.alignment }} size-style"
+  style="
+    --star-fill-color: {{ star_fill }};
+    --star-fill-color-rgb: {{ star_fill_rgb }};
+    --ratings-text-color: {{ text_fill }};
+    {% render 'size-style', settings: block_settings %}
+  "
+  {{ block.shopify_attributes }}
+>
+  <svg
+    class="visually-hidden"
+    style="width: 0; height: 0;"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 32 32"
+    role="presentation"
+  >
+    <defs>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="star-{{ block.id }}">
+        <path d="M31.547 12a.848.848 0 00-.677-.577l-9.427-1.376-4.224-8.532a.847.847 0 00-1.516 0l-4.218 8.534-9.427 1.355a.847.847 0 00-.467 1.467l6.823 6.664-1.612 9.375a.847.847 0 001.23.893l8.428-4.434 8.432 4.432a.847.847 0 001.229-.894l-1.615-9.373 6.822-6.665a.845.845 0 00.214-.869z" />
+      </symbol>
+    </defs>
+  </svg>
+  <div class="ratings-block__row">
+    {% if block_settings.text_position == 'before_stars' and block_settings.text != blank %}
+      <p class="ratings-block__text {{ block_settings.type_preset }}">{{ block_settings.text }}</p>
+    {% endif %}
+    <div
+      class="ratings-block__stars"
+      style="--star-size: calc(var(--font-{{ block_settings.type_preset }}--size) * 1.1);"
+      role="img"
+      aria-label="{{ rating_value }}/5"
+    >
+      {% for star in (1..5) %}
+        <svg
+          class="ratings-block__star {% if star <= rating_value %}ratings-block__star--filled{% endif %}"
+          viewBox="0 0 32 32"
+          style="--empty-star-fill-color: rgb(var(--star-fill-color-rgb) / var(--opacity-20))"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="#star-{{ block.id }}" xlink:href="#star-{{ block.id }}"></use>
+        </svg>
+      {% endfor %}
+    </div>
+    {% if block_settings.text_position == 'after_stars' and block_settings.text != blank %}
+      <p class="ratings-block__text {{ block_settings.type_preset }}">{{ block_settings.text }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .ratings-block {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    min-width: fit-content;
+  }
+
+  .ratings-block__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--gap-xs);
+  }
+
+  .ratings-block__stars {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3xs);
+  }
+
+  .ratings-block__text {
+    color: var(--ratings-text-color);
+    margin: 0;
+  }
+
+  .ratings-block__star {
+    height: var(--star-size);
+    width: auto;
+    aspect-ratio: 1;
+    fill: var(--empty-star-fill-color);
+    flex-shrink: 0;
+  }
+
+  .ratings-block__star--filled {
+    fill: var(--star-fill-color);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.ratings",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "t:settings.star_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "t:settings.text_position",
+      "options": [
+        {
+          "value": "after_stars",
+          "label": "t:options.text_after_stars"
+        },
+        {
+          "value": "before_stars",
+          "label": "t:options.text_before_stars"
+        }
+      ],
+      "default": "after_stars"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "select",
+      "id": "stars_color",
+      "label": "t:settings.stars_color",
+      "options": [
+        {
+          "value": "foreground",
+          "label": "t:options.text"
+        },
+        {
+          "value": "foreground_heading",
+          "label": "t:options.heading"
+        },
+        {
+          "value": "primary",
+          "label": "t:options.link"
+        },
+        {
+          "value": "primary_hover",
+          "label": "t:options.primary_hover"
+        },
+        {
+          "value": "border",
+          "label": "t:options.border"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "options": [
+        {
+          "value": "match",
+          "label": "t:options.match_stars"
+        },
+        {
+          "value": "foreground",
+          "label": "t:options.text"
+        },
+        {
+          "value": "foreground_heading",
+          "label": "t:options.heading"
+        },
+        {
+          "value": "primary",
+          "label": "t:options.link"
+        },
+        {
+          "value": "primary_hover",
+          "label": "t:options.primary_hover"
+        },
+        {
+          "value": "border",
+          "label": "t:options.border"
+        }
+      ],
+      "default": "match"
+    },
+    {
+      "type": "header",
+      "content": "t:content.typography"
+    },
+    {
+      "type": "select",
+      "id": "type_preset",
+      "label": "t:settings.preset",
+      "options": [
+        {
+          "value": "paragraph",
+          "label": "t:options.paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "t:options.h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:options.h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:options.h3"
+        },
+        {
+          "value": "h4",
+          "label": "t:options.h4"
+        },
+        {
+          "value": "h5",
+          "label": "t:options.h5"
+        },
+        {
+          "value": "h6",
+          "label": "t:options.h6"
+        }
+      ],
+      "default": "paragraph"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit"
+        },
+        {
+          "value": "100%",
+          "label": "t:options.fill"
+        }
+      ],
+      "default": "100%"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:settings.alignment",
+      "default": "left",
+      "visible_if": "{{ block.settings.width != 'fit-content' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ratings",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}
