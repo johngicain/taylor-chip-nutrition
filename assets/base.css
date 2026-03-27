@@ -801,7 +801,8 @@ h2,
 .h2.h2,
 .text-block.h2 > *,
 .text-block.h2 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-h2--family);
+  /* font-family: var(--font-h1--family); */
+  font-family: "rolla", sans-serif;
   font-style: var(--font-h2--style);
   font-weight: var(--font-h2--weight);
   font-size: var(--font-h2--size);
@@ -824,7 +825,8 @@ h3,
 .h3.h3,
 .text-block.h3 > *,
 .text-block.h3 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-h3--family);
+  /* font-family: var(--font-h1--family); */
+  font-family: "rolla", sans-serif;
   font-style: var(--font-h3--style);
   font-weight: var(--font-h3--weight);
   font-size: var(--font-h3--size);
@@ -846,7 +848,8 @@ h4,
 .h4.h4,
 .text-block.h4 > *,
 .text-block.h4 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-h4--family);
+  /* font-family: var(--font-h1--family); */
+  font-family: "rolla", sans-serif;
   font-style: var(--font-h4--style);
   font-weight: var(--font-h4--weight);
   font-size: var(--font-h4--size);
@@ -868,7 +871,8 @@ h5,
 .h5.h5,
 .text-block.h5 > *,
 .text-block.h5 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-h5--family);
+  /* font-family: var(--font-h1--family); */
+  font-family: "rolla", sans-serif;
   font-style: var(--font-h5--style);
   font-weight: var(--font-h5--weight);
   font-size: var(--font-h5--size);
@@ -890,7 +894,8 @@ h6,
 .h6.h6,
 .text-block.h6 > *,
 .text-block.h6 :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-h6--family);
+  /* font-family: var(--font-h1--family); */
+  font-family: "rolla", sans-serif;
   font-style: var(--font-h6--style);
   font-weight: var(--font-h6--weight);
   font-size: var(--font-h6--size);
