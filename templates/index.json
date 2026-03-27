@@ -148,7 +148,7 @@
           "settings": {
             "image": "shopify://shop_images/taylor-chip-banner.png",
             "link": "",
-            "image_ratio": "portrait",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "custom",
@@ -182,7 +182,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
+        "gap": 0,
         "section_width": "page-width",
         "section_height": "small",
         "section_height_custom": 50,
