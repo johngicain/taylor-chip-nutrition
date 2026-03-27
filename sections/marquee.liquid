@@ -84,17 +84,12 @@
     align-content: center;
   }
 
-  .marquee__repeated-items .text-block {
-    background-color: var(--marquee-text-block-bg);
-    border-radius: var(--marquee-text-block-radius);
+  .marquee__repeated-items .text-block--background {
+    background-color: var(--text-background-color, var(--marquee-text-block-bg));
+    border-radius: var(--text-corner-radius, var(--marquee-text-block-radius));
   }
 
   .marquee__repeated-items .text-block:not(.custom-color) {
-    color: var(--marquee-text-block-color);
-  }
-
-  .marquee__repeated-items .text-block.custom-color,
-  .marquee__repeated-items .text-block.custom-color > :is(h1, h2, h3, h4, h5, h6, p, *) {
     color: var(--marquee-text-block-color);
   }
 

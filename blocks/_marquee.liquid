@@ -19,6 +19,13 @@
     {%- render 'spacing-style', settings: block_settings %};
     {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
     --marquee-direction: {{ block_settings.movement_direction }};
+    {%- if block_settings.text_block_color != blank -%}
+      --marquee-text-block-color: {{ block_settings.text_block_color }};
+    {%- endif -%}
+    {%- if block_settings.text_block_background_color != blank -%}
+      --marquee-text-block-bg: {{ block_settings.text_block_background_color }};
+    {%- endif -%}
+    --marquee-text-block-radius: {{ block_settings.text_block_border_radius }}px;
     {%- if block_settings.transparent_background == true -%}background-color: transparent;{%- endif -%}
   "
   data-speed-factor="25"
@@ -81,6 +88,15 @@
 
   .marquee__repeated-items > * {
     align-content: center;
+  }
+
+  .marquee__repeated-items .text-block--background {
+    background-color: var(--text-background-color, var(--marquee-text-block-bg));
+    border-radius: var(--text-corner-radius, var(--marquee-text-block-radius));
+  }
+
+  .marquee__repeated-items .text-block:not(.custom-color) {
+    color: var(--marquee-text-block-color);
   }
 
   .hero__content-wrapper.layout-panel-flex--column marquee-component {
@@ -153,6 +169,32 @@
       "id": "transparent_background",
       "label": "t:settings.transparent_background",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "text_block_color",
+      "label": "t:settings.color",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "text_block_background_color",
+      "label": "t:settings.background_color",
+      "alpha": true
+    },
+    {
+      "type": "range",
+      "id": "text_block_border_radius",
+      "label": "t:settings.corner_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "header",
