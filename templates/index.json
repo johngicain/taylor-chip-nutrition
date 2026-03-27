@@ -82,7 +82,7 @@
                 "case": "none",
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
-                "strong_color": "#000000",
+                "strong_color": "#4d9dd9",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -125,6 +125,7 @@
                 "label": "Save 52% + Free Shipping",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
+                "desktop_side_image": "shopify://shop_images/promo-graphics.png",
                 "desktop_image_position": "before",
                 "style_class": "button-secondary",
                 "width": "fit-content",
@@ -168,6 +169,9 @@
       "block_order": [
         "group_9bp4hf",
         "image_GdLmJm"
+      ],
+      "custom_css": [
+        ".button-block__desktop-image {right: -65%; bottom: -70%;}"
       ],
       "name": "t:names.image_with_text",
       "settings": {
