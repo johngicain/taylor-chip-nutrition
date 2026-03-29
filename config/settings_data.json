@@ -476,7 +476,7 @@
           "foreground_heading": "#1c508e",
           "foreground": "#1c508e",
           "primary": "#1c508e",
-          "primary_hover": "#000000",
+          "primary_hover": "#1c508e",
           "border": "#0000000f",
           "shadow": "#000000",
           "primary_button_background": "#1c508e",
