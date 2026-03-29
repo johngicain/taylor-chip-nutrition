@@ -4453,14 +4453,14 @@
         "text_pma8Me": {
           "type": "text",
           "settings": {
-            "text": "<p>Sign up to get early access to new flavors, special offers & sweet surprises.</p>",
+            "text": "<p>Sign up to get early access to new flavors, special offers &<br/>sweet surprises.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
             "type_preset": "custom",
             "font": "var(--font-body--family)",
             "font_size": "1.5rem",
-            "line_height": "normal",
+            "line_height": "tight",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
