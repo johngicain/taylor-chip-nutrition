@@ -472,7 +472,7 @@
       },
       "scheme-9ec29ca2-fafe-4329-a63a-20f8468968cf": {
         "settings": {
-          "background": "#cce9ff",
+          "background": "#e6f2f9",
           "foreground_heading": "#1c508e",
           "foreground": "#1c508e",
           "primary": "#1c508e",
@@ -489,7 +489,7 @@
           "secondary_button_text": "#1c508e",
           "secondary_button_border": "#1c508e",
           "secondary_button_hover_background": "#1c508e",
-          "secondary_button_hover_text": "#FFFFFF",
+          "secondary_button_hover_text": "#ffffff",
           "secondary_button_hover_border": "#1c508e",
           "input_background": "#ffffff",
           "input_text_color": "#000000",
