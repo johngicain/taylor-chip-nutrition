@@ -13,7 +13,9 @@
   --size-style-width: {{ settings.width }};
 {%- endif -%}
 
-{%- if settings.height == 'custom' -%}
+{%- if settings.height == 'fixed' -%}
+  --size-style-height: {{ settings.pixel_height | default: 400 }}px;
+{%- elsif settings.height == 'custom' -%}
   --size-style-height:
   {{- settings.custom_height }}%;
 {%- elsif settings.height == 'fill' -%}

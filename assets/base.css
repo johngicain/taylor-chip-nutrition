@@ -4026,6 +4026,7 @@ fly-to-cart.fly-to-cart--sticky {
 }
 
 .group-block--height-custom,
+.group-block--height-fixed,
 .group-block--height-fill {
   height: var(--size-style-height);
 }
@@ -4039,7 +4040,8 @@ fly-to-cart.fly-to-cart--sticky {
   flex: 1;
 }
 
-.layout-panel-flex--column > .group-block--height-custom {
+.layout-panel-flex--column > .group-block--height-custom,
+.layout-panel-flex--column > .group-block--height-fixed {
   flex-basis: var(--size-style-height);
 }
 
