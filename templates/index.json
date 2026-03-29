@@ -374,7 +374,7 @@
       "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "normal",
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "text_block_color": "",
         "text_block_background_color": "",
         "text_block_border_radius": 0,
@@ -581,7 +581,7 @@
       "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "normal",
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "text_block_color": "",
         "text_block_background_color": "",
         "text_block_border_radius": 0,
