@@ -2620,7 +2620,7 @@
         "gap": 0,
         "column_gap": 30,
         "grid_align_items": "start",
-        "side_column_width": "max",
+        "side_column_width": "narrow",
         "center_column_width": "wide",
         "mobile_image_first": true,
         "narrow_page_width": true,
